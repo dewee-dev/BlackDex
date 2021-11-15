@@ -24,7 +24,6 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
-    
 - uses: actions/download-artifact@v2
         with:
           path: apk/
