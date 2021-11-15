@@ -39,3 +39,9 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+- name: upload
+uses:actions/upload-artifact@v2
+
+with:
+name: blackdex.${{ env.product }}.${{ env.type }}
+          path: ${{ github.workspace }}/apk/*.apk
