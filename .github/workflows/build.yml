@@ -24,3 +24,32 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+- uses: actions/download-artifact@v2
+
+        with:
+
+          path: apk/
+
+      - working-directory: apk/
+
+        run: mv */*.apk . ;rm -rf */
+
+        run: |
+
+          cd $GITHUB_WORKSPACE/apk
+
+          git init
+
+          git config --local user.name "github-actions[bot]"
+
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git checkout -b test
+
+          git add *.apk
+
+          git commit -m "${{ needs.prepare.outputs.versionL }}"
+
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+
+          
