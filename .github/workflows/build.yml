@@ -24,8 +24,5 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
-    - name: Upload App To Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: blackdex3.${{ env.product }}.${{ env.type }}
-          path: ${{ github.workspace }}/apk/*.apk
+    - name: Upload a Build Artifact
+  uses: actions/upload-artifact@v2.2.4
